@@ -1,2 +1,3 @@
 First drop the Loan_ID column.
 Impute Missing values.
+delete any duplicate records.
