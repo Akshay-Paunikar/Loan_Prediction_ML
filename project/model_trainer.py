@@ -47,15 +47,62 @@ class ModelTrainer:
                 # "XGBoost Classifier": XGBClassifier()
             }
             
+            params = {
+                "Logistic Regression": {},
+                "Decision Tree Classifier": {
+                    "max_depth": [3, 5, 7, 9],
+                    "min_samples_split": [10, 20, 30, 40],
+                    "min_samples_leaf": [5, 10, 20, 50],
+                    "criterion": ['entropy', 'gini'],
+                    "splitter": ['best', 'random'],
+                    "max_features": ['auto', 'sqrt', 'log2']
+                },
+                "Random Forest Classifier": {
+                    "n_estimators": [100, 200, 400, 600, 800],
+                    "criterion": ['entropy', 'gini', 'log_loss'],
+                    "max_depth": [3, 5, 7, 9],
+                    "min_samples_split": [10, 20, 30, 40],
+                    "min_samples_leaf": [5, 10, 20, 50],
+                    "max_features": [None, 'sqrt', 'log2']                                        
+                },
+                "Gradient Boosting Classifier":{
+                    "n_estimators": [100, 200, 400, 600, 800],
+                    "criterion": ['friedman_mse', 'squared_error'],
+                    "max_depth": [3, 5, 7, 9],
+                    "min_samples_split": [10, 20, 30, 40],
+                    "min_samples_leaf": [5, 10, 20, 50],
+                    "max_features": ['auto', 'sqrt', 'log2'],
+                    "loss": ['log_loss', 'deviance', 'exponential'],
+                    "learning_rate": [0.1, 0.01, 0.5, 0.05],
+                    "subsample": [0.1, 0.4, 0.6, 0.8, 1.0]                   
+                },
+                "Ada Boost Classifier":{
+                    "n_estimators": [100, 200, 400, 600, 800],
+                    "learning_rate": [0.1, 0.01, 0.5, 0.05],
+                    "algorithm": ['SAMME', 'SAMME.R']
+                },
+                "Support Vector Classifier":{
+                    "kernel": ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
+                    "gamma": ['scale', 'auto']
+                },
+                "Gaussin Naive Bayes": {},
+                "Cat Boost Classifier": {
+                    'depth': [6,8,10],
+                    'learning_rate': [0.1, 0.01, 0.5, 0.05],
+                    'iterations': [30, 50, 100]
+                }
+            }
+            
             model_report: dict = evaluate_model(TrainFeatures=X_train, TrainTarget=y_train,
                                                 TestFeatures=X_test, TestTarget=y_test,
-                                                models=models)
+                                                models=models, params=params)
             
+            logging.info("model hyperparameter tuning done")
             logging.info("model training complete")
             
             # to get best model score from dictionary
             best_model_score = max(sorted(model_report.values()))
-            
+        
             # to get best model name from dictionary
             best_model_name = list(model_report.keys())[
                 list(model_report.values()).index(best_model_score)
