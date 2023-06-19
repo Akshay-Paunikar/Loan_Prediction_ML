@@ -21,25 +21,25 @@ h3{
 
 .lp-1{
     background-color: wheat;
-    display: inline-block;
+    display: flexbox;
     font-size:larger;
     font-weight: bold;
-    margin: 5px;
-    padding: 5px;
+    margin: auto;
+    padding: 4px;
     border: 4px solid white;
     border-radius: 5px;
-    width:auto;
+    width:35%;
     height:auto;
 }
 
 .button{
     width: auto;
-    font-size:x-large;
+    font-size: large;
     font-weight: bold;
     text-align: center;
     background-color:darkolivegreen;
     color:white;
-    padding: 8px 10px;
+    padding: 5px 5px;
     margin: 5px 0;
     border: 4px solid blanchedalmond;
     border-radius: 4px;
@@ -48,13 +48,13 @@ h3{
 }
 
 input[type=submit] {
-    width: 10%;
-    font-size: large;
+    width: 5%;
+    font-size: medium;
     font-weight: bold;
     text-align: center;
     background-color:darkgreen;
     color:white;
-    padding: 8px 10px;
+    padding: 5px 5px;
     margin: 2px 0;
     border: 4px solid blanchedalmond;
     border-radius: 4px;
@@ -62,5 +62,9 @@ input[type=submit] {
     align-items: center;
 }
 
-
+input.form-control:placeholder-shown{
+    text-overflow: clip;
+    width:32%;
+    /* text-align: center; */
+}
 
