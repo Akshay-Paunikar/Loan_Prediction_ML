@@ -3,7 +3,7 @@ import pandas as pd
 from flask import Flask, render_template, request
 
 from sklearn.preprocessing import StandardScaler
-from project.predict_pipeline import CustomData, PredictPipeline
+from predict_pipeline import CustomData, PredictPipeline
 
 application = Flask(__name__)
 
@@ -39,7 +39,11 @@ def predict_datapoint():
         
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
-        return render_template('index.html', results=results[0])
+        if results == 0.0:
+            loan_status = "No"
+        else:
+            loan_status = "Yes"       
+        return render_template('index.html', results=loan_status)
     
 if __name__ == "__main__":
     app.run(debug=True)

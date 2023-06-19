@@ -7,11 +7,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
-from project.data_transformation import DataTransformation
-from project.data_transformation import DataTransformationConfig
-
-from project.model_trainer import ModelTrainer
-from project.model_trainer import ModelTrainerConfig
+from data_transformation import DataTransformationConfig,DataTransformation
+from model_trainer import ModelTrainer, ModelTrainerConfig
 
 @dataclass
 class DataIngestionConfig:

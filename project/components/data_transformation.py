@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder
 
 from project.exception import CustomException
 from project.logger import logging
@@ -95,13 +95,19 @@ class DataTransformation:
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
             
+            logging.info("Applying Label Encoder to Target Data")
+            
+            le = LabelEncoder()            
+            target_train_arr = le.fit_transform(target_feature_train_df)
+            target_test_arr = le.fit_transform(target_feature_test_df)
+            
             
             train_arr = np.c_[
-                input_feature_train_arr, np.array(target_feature_train_df)
+                input_feature_train_arr, target_train_arr
             ]
             
             test_arr = np.c_[
-                input_feature_test_arr, np.array(target_feature_test_df)
+                input_feature_test_arr, target_test_arr
             ]
             
             logging.info("Saved Preprocessing Object")

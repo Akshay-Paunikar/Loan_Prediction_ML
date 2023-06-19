@@ -44,7 +44,7 @@ class ModelTrainer:
                 "Gaussin Naive Bayes": GaussianNB(),
                 # "K-Neighbours Classifier": KNeighborsClassifier(),
                 "CatBoost Classifier": CatBoostClassifier(verbose=False),
-                # "XGBoost Classifier": XGBClassifier()
+                "XGBoost Classifier": XGBClassifier()
             }
             
             params = {
@@ -90,6 +90,10 @@ class ModelTrainer:
                     'depth': [6,8,10],
                     'learning_rate': [0.1, 0.01, 0.5, 0.05],
                     'iterations': [30, 50, 100]
+                },
+                "XGBoost Classifier":{
+                    'learning_rate':[.1,.01,.05,.001],
+                    'n_estimators': [8,16,32,64,128,256]
                 }
             }
             
