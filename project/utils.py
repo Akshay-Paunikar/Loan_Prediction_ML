@@ -28,9 +28,9 @@ def evaluate_model(TrainFeatures, TrainTarget, TestFeatures, TestTarget, models,
         
         for i in range(len(list(models))):
             model = list(models.values())[i]
-            params = params[list(models.keys())[i]]
+            para = params[list(models.keys())[i]]
             
-            gs = GridSearchCV(model, params, cv=3)
+            gs = GridSearchCV(model, para, cv=3)
             gs.fit(TrainFeatures, TrainTarget)
             
             model.set_params(**gs.best_params_)            

@@ -40,9 +40,9 @@ def predict_datapoint():
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
         if results == 0.0:
-            loan_status = "No"
+            loan_status = "Rejected"
         else:
-            loan_status = "Yes"       
+            loan_status = "Approved"       
         return render_template('index.html', results=loan_status)
     
 if __name__ == "__main__":

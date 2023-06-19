@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
     <title>Loan Prediction ML APP</title>
 </head>
 <body>
     <div class="login">
         <h1>Loan Prediction Indicator</h1>
         <form action="{{url_for('predict_datapoint')}}" method="post">
-            <h1>
-                <legend>Loan Prediction Indicator</legend>
-            </h1>
+            <h2>
+                <legend>Predict Status of your Loan Application</legend>
+            </h2>
             <div class="lp-1">
                 <label class="form-label">Education :</label>
                 <select class="form-control" name="Education" placeholder="Select Education Level" required>
@@ -115,13 +116,13 @@
                 </select>
             </div>
 
-            <div class="lp-1">
-                <input class="btn btn-primary" type="submit" value="Predict your loan status" required>
+            <div class="button">Predict Loan Status:
+                <input class="btn btn-primary" type="submit" value="Submit" required>
             </div>
         </form>
-        <h2>
-            The Prediction is {{results}}
-        </h2>
+        <h3>
+            Loan Status: {{results}}
+        </h3>
     </div>
 </body>
 </html>

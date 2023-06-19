@@ -35,65 +35,56 @@ class ModelTrainer:
             )
             
             models = {
-                "Logistic Regrression": LogisticRegression(),
-                "Decision Tree Classifier": DecisionTreeClassifier(),
+                "Logistic Regression": LogisticRegression(),
+                "Decision Tree": DecisionTreeClassifier(),
                 "Random Forest Classifier": RandomForestClassifier(),
                 "Gradient Boosting Classifier": GradientBoostingClassifier(),
                 "Ada Boost Classifier": AdaBoostClassifier(),
                 "Support Vector Classifier": SVC(),
-                "Gaussin Naive Bayes": GaussianNB(),
-                # "K-Neighbours Classifier": KNeighborsClassifier(),
+                "Gaussin Naive Bayes": GaussianNB(),            
                 "CatBoost Classifier": CatBoostClassifier(verbose=False),
                 "XGBoost Classifier": XGBClassifier()
             }
             
             params = {
                 "Logistic Regression": {},
-                "Decision Tree Classifier": {
-                    "max_depth": [3, 5, 7, 9],
-                    "min_samples_split": [10, 20, 30, 40],
-                    "min_samples_leaf": [5, 10, 20, 50],
+                "Decision Tree": {
+                    "max_depth": [3, 5, 7],
                     "criterion": ['entropy', 'gini'],
                     "splitter": ['best', 'random'],
-                    "max_features": ['auto', 'sqrt', 'log2']
+                    "max_features": ['sqrt','log2']                    
                 },
                 "Random Forest Classifier": {
-                    "n_estimators": [100, 200, 400, 600, 800],
                     "criterion": ['entropy', 'gini', 'log_loss'],
-                    "max_depth": [3, 5, 7, 9],
-                    "min_samples_split": [10, 20, 30, 40],
-                    "min_samples_leaf": [5, 10, 20, 50],
-                    "max_features": [None, 'sqrt', 'log2']                                        
+                    "max_depth": [3, 5, 7],
+                    "max_features": ['sqrt','log2'],
+                    "n_estimators": [8,16,32,64,128,256]                                                     
                 },
-                "Gradient Boosting Classifier":{
-                    "n_estimators": [100, 200, 400, 600, 800],
+                "Gradient Boosting Classifier":{                    
                     "criterion": ['friedman_mse', 'squared_error'],
-                    "max_depth": [3, 5, 7, 9],
-                    "min_samples_split": [10, 20, 30, 40],
-                    "min_samples_leaf": [5, 10, 20, 50],
-                    "max_features": ['auto', 'sqrt', 'log2'],
-                    "loss": ['log_loss', 'deviance', 'exponential'],
-                    "learning_rate": [0.1, 0.01, 0.5, 0.05],
-                    "subsample": [0.1, 0.4, 0.6, 0.8, 1.0]                   
+                    "max_depth": [3, 5, 7],                    
+                    "learning_rate": [0.1, 0.01, 0.5],
+                    "max_features": ['sqrt','log2'],
+                    "n_estimators": [8,16,32,64,128,256]                                     
                 },
                 "Ada Boost Classifier":{
-                    "n_estimators": [100, 200, 400, 600, 800],
-                    "learning_rate": [0.1, 0.01, 0.5, 0.05],
-                    "algorithm": ['SAMME', 'SAMME.R']
+                    "learning_rate": [0.1, 0.01, 0.5],
+                    "algorithm": ['SAMME', 'SAMME.R'],
+                    "n_estimators": [8,16,32,64,128,256]
                 },
                 "Support Vector Classifier":{
-                    "kernel": ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
+                    "kernel": ['linear', 'poly', 'rbf', 'sigmoid'],
                     "gamma": ['scale', 'auto']
                 },
                 "Gaussin Naive Bayes": {},
-                "Cat Boost Classifier": {
-                    'depth': [6,8,10],
-                    'learning_rate': [0.1, 0.01, 0.5, 0.05],
+                "CatBoost Classifier": {
+                    'depth': [6,8],
+                    'learning_rate': [0.1, 0.01, 0.5],
                     'iterations': [30, 50, 100]
                 },
                 "XGBoost Classifier":{
-                    'learning_rate':[.1,.01,.05,.001],
-                    'n_estimators': [8,16,32,64,128,256]
+                    'learning_rate':[0.1,0.01,0.05],
+                    "n_estimators": [8,16,32,64,128,256]
                 }
             }
             
