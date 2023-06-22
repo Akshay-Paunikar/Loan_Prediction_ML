@@ -46,4 +46,4 @@ def predict_datapoint():
         return render_template('index.html', results=loan_status)
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
