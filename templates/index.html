@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Loan Prediction ML APP</title>
+</head>
+<body>
+    <div class="login">
+        <h1>Loan Prediction Indicator</h1>
+        <form action="{{url_for('predict_datapoint')}}" method="post">
+            <h2>
+                <legend>Predict Status of your Loan Application</legend>
+            </h2>
+            <div class="lp-1">
+                <label class="form-label">Education :</label>
+                <select class="form-control" name="Education" placeholder="Select Education Level" required>
+                    <option class="placeholder" selected disabled value="">Select Education Level</option>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Not Graduate">Not Graduate</option>
+                </select>
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">ApplicantIncome :</label>
+                <input class="form-control" type="number" name="ApplicantIncome" placeholder="Enter Applicant Income"
+                min="0" max="10000000">
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">CoapplicantIncome :</label>
+                <input class="form-control" type="number" name="CoapplicantIncome" placeholder="Enter Coapplicant Income"
+                min="0" max="10000000">
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">LoanAmount :</label>
+                <input class="form-control" type="number" name="LoanAmount" placeholder="Enter Loan Amount"
+                min="1" max="1000000000">
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">Property_Area :</label>
+                <select class="form-control" name="Property_Area" placeholder="Enter Property Area">
+                    <option class="placeholder" selected disabled value="">Enter Property Area</option>
+                    <option value="Urban">Urban</option>
+                    <option value="Rural">Rural</option>
+                    <option value="Semiurban">Semiurban</option>
+                </select>
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">Gender :</label>
+                <select class="form-control" name="Gender" placeholder="Enter your Gender">
+                    <option class="placeholder" selected disabled value="">Enter your Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">Married :</label>
+                <select class="form-control" name="Married" placeholder="Enter Marital Status">
+                    <option class="placeholder" selected disabled value="">Enter Marital Status</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">Dependents :</label>
+                <select class="form-control" name="Dependents" placeholder="Enter no of Dependents">
+                    <option class="placeholder" selected disabled value="">Enter no of Dependents</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3+">3+</option>
+                </select>
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">Self_Employed :</label>
+                <select class="form-control" name="Self_Employed" placeholder="Enter Self_Employed or Not">
+                    <option class="placeholder" selected disabled value="">Enter Self_Employed or Not</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">Loan_Amount_Term :</label>
+                <select class="form-control" name="Loan_Amount_Term" placeholder="Select Loan_Amount_Term">
+                    <option class="placeholder" selected disabled value="">Select Loan_Amount_Term</option>
+                    <option value="12.0">12.0</option>
+                    <option value="18.0">18.0</option>
+                    <option value="24.0">24.0</option>
+                    <option value="36.0">36.0</option>
+                    <option value="48.0">48.0</option>
+                    <option value="60.0">60.0</option>
+                    <option value="120.0">120.0</option>
+                    <option value="180.0">180.0</option>
+                    <option value="240.0">240.0</option>
+                    <option value="300.0">300.0</option>
+                    <option value="360.0">360.0</option>
+                </select>
+            </div>
+
+            <div class="lp-1">
+                <label class="form-label">Credit_History :</label>
+                <select class="form-control" name="Credit_History" placeholder="Select your Credit_History">
+                    <option class="placeholder" selected disabled value="">Select your Credit_History</option>
+                    <option value="1.0">1.0</option>
+                    <option value="0.0">0.0</option>
+                </select>
+            </div>
+
+            <div class="button">Predict Loan Status:
+                <input class="btn btn-primary" type="submit" value="Submit" required>
+            </div>
+        </form>
+        <h3>
+            Loan Status: {{results}}
+        </h3>
+    </div>
+</body>
+</html>

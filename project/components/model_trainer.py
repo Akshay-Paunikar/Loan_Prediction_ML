@@ -55,7 +55,7 @@ class ModelTrainer:
                     "max_features": ['sqrt','log2']                    
                 },
                 "Random Forest Classifier": {
-                    "criterion": ['entropy', 'gini', 'log_loss'],
+                    "criterion": ['entropy', 'gini'],
                     "max_depth": [3, 5, 7],
                     "max_features": ['sqrt','log2'],
                     "n_estimators": [8,16,32,64,128,256]                                                     
